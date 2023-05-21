@@ -19,7 +19,7 @@ class Book(Base):
     title = Column(String)
     id_publisher = Column(Integer, ForeignKey('publisher.id'))
     publisher = relationship('Publisher',  back_populates='books' )
-    sales = relationship('Sale', back_populates='book')
+    # sales = relationship('Sale', back_populates='book')
     stocks = relationship('Stock', back_populates='book')
 
 class Stock(Base):
@@ -47,7 +47,5 @@ class Sale(Base):
     price = Column(String)
     date_sale = Column(DateTime)
     id_stock = Column(Integer, ForeignKey('stock.id'))
-    id_book = Column(Integer, ForeignKey('book.id'))
     count = Column(Integer)
-    book = relationship('Book', back_populates='sales')
     stock = relationship('Stock', back_populates='sales')
